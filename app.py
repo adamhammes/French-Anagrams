@@ -9,7 +9,7 @@ def hello():
     letters = request.args.get('letters')
     if not letters: 
         return app.send_static_file('home.html')
-        return redirect(url_for('run', letters=letters))
+    return redirect(url_for('run', letters=letters))
 
 @app.route("/<letters>")
 def run(letters):
