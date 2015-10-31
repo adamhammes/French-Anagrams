@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from FrenchBingo import bingo 
 
-app = Flask(__name__, static_url_path='/static')
-words = bingo.read_file('FrenchBingo/FrenchWordList.txt', encoding='ISO-8859-1')
+app = Flask(__name__, static_url_path='/static/')
+words = bingo.read_file('FrenchBingo/words.txt')
 
 @app.route("/", methods=['GET'])
 def hello():
