@@ -7,12 +7,12 @@ def remove_accent(word):
 	return ''.join(c for c in unicodedata.normalize('NFD', word) if unicodedata.category(c) != 'Mn')
 
 
-def read_file(filename, encoding='utf-8', max_word_length=100):
+def read_file(filename, encoding='utf-8'):
 	with codecs.open(filename, 'r', encoding) as f:
 		with_accents = [line.strip() for line in f.readlines()]
 
 	no_accents = [remove_accent(word) for word in with_accents]
-	return frozenset([word for word in no_accents if len(word) <= max_word_length]) 
+	return frozenset(word for word in no_accents)
 	
 
 def find_words(word_list, letters, sort_by_length=False):
