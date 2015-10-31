@@ -1,3 +1,5 @@
+# -*- coding: latin-1 -*-
+
 import codecs
 import itertools
 import unicodedata
@@ -6,7 +8,7 @@ import unicodedata
 def remove_accent(word):
 	'''
 	Return the words sans accents
-	ex. Ã©tudier -> etudier
+	ex. étudier -> etudier
 	'''
 	return ''.join(c for c in unicodedata.normalize('NFD', word) if unicodedata.category(c) != 'Mn')
 
