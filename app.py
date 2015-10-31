@@ -6,15 +6,15 @@ words = bingo.read_file('FrenchBingo/words.txt')
 
 @app.route("/", methods=['GET'])
 def hello():
-    letters = request.args.get('letters')
-    if not letters: 
-        return app.send_static_file('home.html')
-    return redirect(url_for('run', letters=letters))
+	letters = request.args.get('letters')
+	if not letters: 
+		return app.send_static_file('home.html')
+	return redirect(url_for('run', letters=letters))
 
 @app.route("/<letters>")
 def run(letters):
-    results = bingo.find_words(words, letters, sort_by_length=True)[:15]
-    return render_template('results.html', letters=letters, results=results)
+	results = bingo.find_words(words, letters, sort_by_length=True)[:15]
+	return render_template('results.html', letters=letters, results=results)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	app.run(debug=True, threaded=True)
