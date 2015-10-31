@@ -18,19 +18,21 @@ def read_file(filename, encoding='utf-8'):
 	with codecs.open(filename, 'r', encoding) as f:
 		with_accents = (line.strip() for line in f.readlines())
 
-	d = collections.defaultdict(list)
+	d = collections.defaultdict(set)
 	for word in with_accents:
-		d[remove_accent(word)].append(word)
+		d[remove_accent(word)].add(word)
 	return d 
 
 
 def find_words(word_list, letters, sort_by_length=False):
-	possibilities = set() 
+	valid_keys = [] 
 	for length in range(0, len(letters) + 1):
-		possibilities |= set(''.join(p) for p in itertools.permutations(letters, length))
+		for p in itertools.permutations(letters, length):
+			word = ''.join(p)
+			if word in word_list:
+				valid_keys.append(word)
 
-	valid_keys = list(word_list.keys() & possibilities)
-	results = [word for key in valid_keys for word in word_list[key]] 
+	results = list(set(word for key in valid_keys for word in word_list[key]))
 
 	if sort_by_length:
 		results.sort(key=len, reverse=True) 
