@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>French Bingo</title>
+</head>
+<body>
+<h1>Enter some letters to search:</h1>
+<form id="searchbox" method="get">
+  <input name="letters">
+</form>

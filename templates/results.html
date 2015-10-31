@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>French Bingo</title>
+</head>
+<body>
+<h1>Results for '{{letters}}':</h1>
+<ul id="results">
+	{% for result in results %}
+		<li>{{ result }}</li>
+	{% endfor %}
+</ul>
+</body>
+</html>
