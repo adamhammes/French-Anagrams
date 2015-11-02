@@ -10,7 +10,7 @@ def hello():
     if request.method == 'GET':
         return app.send_static_file('home.html')
     else:
-        letters = request.form['letters']
+        letters = request.form['letters'][:7]
         return redirect(url_for('run', letters=letters))
 
 
