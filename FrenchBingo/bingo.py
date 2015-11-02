@@ -8,10 +8,10 @@ from unicodedata import normalize, category
 
 
 def remove_accent(word):
-    '''
+    """
     Return the words sans accents
     ex. étudier -> etudier
-    '''
+    """
     return ''.join(c for c in normalize('NFD', word) if category(c) != 'Mn')
 
 
@@ -38,4 +38,4 @@ def find_words(word_list, letters, sort_by_length=False):
     if sort_by_length:
         results.sort(key=len, reverse=True)
 
-    return(results)
+    return results
