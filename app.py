@@ -1,22 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from FrenchBingo import bingo
 
 app = Flask(__name__, static_url_path='/static/')
 words = bingo.read_file('FrenchBingo/words.txt')
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def hello():
-    letters = request.args.get('letters')
-    if not letters:
+    if request.method == 'GET':
         return app.send_static_file('home.html')
-    return redirect(url_for('run', letters=letters))
+    else:
+        letters = request.form['letters']
+        results = bingo.find_words(words, letters, sort_by_length=True)[:15]
+        return render_template('results.html', letters=letters, results=results)
 
-
-@app.route("/<letters>")
-def run(letters):
-    results = bingo.find_words(words, letters, sort_by_length=True)[:15]
-    return render_template('results.html', letters=letters, results=results)
-
-if __name__ == "__main__":
-    app.run(debug=True, threaded=True)
+if __name__ == '__main__':
+    app.run()
