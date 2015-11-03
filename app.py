@@ -22,7 +22,7 @@ def query(letters):
     if request.method == 'POST':
         return redirect(url_for('query', letters=request.form['letters']))
 
-    letters = letters[:MAX_WORD_LENGTH]
+    letters = letters[:MAX_WORD_LENGTH].lower()
     results = bingo.find_words(words, letters, sort_by_length=True)[:NUM_WORDS_TO_DISPLAY]
     return render_template('results.html', letters=letters, results=results)
 
