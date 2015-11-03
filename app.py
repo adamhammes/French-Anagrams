@@ -9,7 +9,7 @@ words = bingo.read_file('FrenchBingo/words.txt')
 
 
 @app.route("/", methods=['GET', 'POST'])
-def hello():
+def index():
     if request.method == 'GET':
         return render_template('home.html')
     else:
