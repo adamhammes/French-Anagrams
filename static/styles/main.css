@@ -14,3 +14,8 @@ form {
 input {
     font-size: 24px;
 }
+
+#searchAgain {
+    margin: auto;
+    float: left;
+}
