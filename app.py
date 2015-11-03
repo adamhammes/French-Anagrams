@@ -11,7 +11,7 @@ words = bingo.read_file('FrenchBingo/words.txt')
 @app.route("/", methods=['GET', 'POST'])
 def hello():
     if request.method == 'GET':
-        return app.send_static_file('home.html')
+        return render_template('home.html')
     else:
         letters = request.form['letters']
         return redirect(url_for('run', letters=letters))
