@@ -14,17 +14,17 @@ def hello():
         return render_template('home.html')
     else:
         letters = request.form['letters']
-        return redirect(url_for('run', letters=letters))
+        return redirect(url_for('query', letters=letters))
 
 
 @app.route("/<letters>", methods=['GET', 'POST'])
-def run(letters):
+def query(letters):
     if request.method == 'GET':
         letters = letters[:MAX_WORD_LENGTH]
         results = bingo.find_words(words, letters, sort_by_length=True)[:NUM_WORDS_TO_DISPLAY]
         return render_template('results.html', letters=letters, results=results)
 
-    return redirect(url_for('run', letters=request.form['letters']))
+    return redirect(url_for('query', letters=request.form['letters']))
 
 if __name__ == '__main__':
     app.run()
