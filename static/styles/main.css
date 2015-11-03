@@ -18,3 +18,7 @@ input {
 #searchAgain {
     float: left;
 }
+
+ul {
+    font-size: 20px;
+}
