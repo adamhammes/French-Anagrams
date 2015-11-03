@@ -6,7 +6,7 @@ from FrenchBingo import bingo
 MAX_WORD_LENGTH = 9
 NUM_WORDS_TO_DISPLAY = 14
 
-app = Flask(__name__, static_url_path='/static/')
+app = Flask(__name__)
 words = bingo.read_file('FrenchBingo/words.txt')
 
 
