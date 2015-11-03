@@ -3,7 +3,7 @@ import sys
 from flask import Flask, render_template, request, redirect, url_for
 from FrenchBingo import bingo
 
-MAX_WORD_LENGTH = 7
+MAX_WORD_LENGTH = 9
 NUM_WORDS_TO_DISPLAY = 14
 
 app = Flask(__name__, static_url_path='/static/')
