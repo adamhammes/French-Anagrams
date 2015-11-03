@@ -4,6 +4,10 @@
 	<title>French Bingo</title>
 </head>
 <body>
+<form id="searchbox" method="post" acton="">
+  <input type="text"   name="letters">
+  <input type="submit" name="submitletters">
+</form>
 <h1>Results for '{{letters}}':</h1>
 <ul id="results">
 	{% for result in results %}
