@@ -1,3 +1,5 @@
+import sys
+
 from flask import Flask, render_template, request, redirect, url_for
 from FrenchBingo import bingo
 
@@ -28,4 +30,5 @@ def query(letters):
 
 
 if __name__ == '__main__':
-    app.run()
+    debug = '--debug' in sys.argv[1:]
+    app.run(debug=debug)
