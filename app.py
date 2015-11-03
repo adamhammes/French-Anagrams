@@ -30,5 +30,5 @@ def query(letters):
 
 
 if __name__ == '__main__':
-    debug = '--debug' in sys.argv[1:]
-    app.run(debug=debug)
+    app.debug = '--debug' in sys.argv[1:]
+    app.run()
