@@ -19,12 +19,13 @@ def index():
 
 @app.route("/<letters>", methods=['GET', 'POST'])
 def query(letters):
-    if request.method == 'GET':
-        letters = letters[:MAX_WORD_LENGTH]
-        results = bingo.find_words(words, letters, sort_by_length=True)[:NUM_WORDS_TO_DISPLAY]
-        return render_template('results.html', letters=letters, results=results)
+    if request.method == 'POST':
+        return redirect(url_for('query', letters=request.form['letters']))
 
-    return redirect(url_for('query', letters=request.form['letters']))
+    letters = letters[:MAX_WORD_LENGTH]
+    results = bingo.find_words(words, letters, sort_by_length=True)[:NUM_WORDS_TO_DISPLAY]
+    return render_template('results.html', letters=letters, results=results)
+
 
 if __name__ == '__main__':
     app.run()
