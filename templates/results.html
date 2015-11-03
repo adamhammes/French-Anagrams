@@ -5,15 +5,15 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}"/>
 </head>
 <body>
-<form id="searchbox" method="post" acton="">
-  <input type="text"   name="letters">
-  <input type="submit" name="submitletters">
-</form>
 <h1>Results for '{{letters}}':</h1>
 <ul id="results">
 	{% for result in results %}
 		<li>{{ result }}</li>
 	{% endfor %}
 </ul>
+<form id="searchbox" method="post" acton="">
+  <input type="text"   name="letters">
+  <input type="submit" name="submitletters">
+</form>
 </body>
 </html>
