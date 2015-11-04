@@ -31,4 +31,4 @@ def query(letters):
 
 if __name__ == '__main__':
     app.debug = '--debug' in sys.argv[1:]
-    app.run()
+    app.run(port=7000)
