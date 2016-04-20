@@ -30,5 +30,10 @@ def query(letters):
 
 
 if __name__ == '__main__':
+    public = '--public' in sys.argv[1:]
     app.debug = '--debug' in sys.argv[1:]
-    app.run(port=7000)
+
+    if public:
+        app.run(host='0.0.0.0', port=7000)
+    else:
+        app.run(port=7000)
